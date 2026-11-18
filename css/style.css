@@ -110,3 +110,13 @@ h2{font-size:clamp(1.5rem,3vw,2.1rem)}
   .band,.prose,.hero-text{padding-left:1.25rem;padding-right:1.25rem}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* shop */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin:2.2rem 0}
+.product{display:flex;flex-direction:column;gap:.35rem;color:var(--text)}
+.product img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#1d1f21}
+.product:hover{text-decoration:none}
+.product:hover img{opacity:.92}
+.product-name{font:500 1.15rem var(--display);letter-spacing:.08em;text-transform:uppercase}
+.product-price{color:var(--bronze);font:500 1.05rem var(--display);letter-spacing:.08em}
+.product-note{font-size:.78rem;color:var(--muted)}

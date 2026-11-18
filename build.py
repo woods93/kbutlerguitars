@@ -14,6 +14,14 @@ USE_LOCAL_IMAGES = True
 REMOTE_BASE = "https://kbutlerguitars.com/wp-content/uploads/"
 LOCAL_BASE = "img/"
 
+# Merch store (Fourthwall). The tee photo is hotlinked from Fourthwall's image host for the preview;
+# swap it for a local copy in img/ before launch.
+SHOP_URL = "https://k-butler-guitars-shop.fourthwall.com"
+TEE_IMG = ("https://imgproxy.fourthwall.dev/KoUZgrrpQIu3sp7ubzsK7Ux6M4R2VZmmlnHIbVCdPy0/w:1920/sm:1/enc/"
+           "jq2EuHlqjTLZbPDT/U6js3VxbQjJS4ArD/GvlnVWa0LlO2PS3T/5YfApjVmyi8Joa-y/FqP1zN4LuLvAJ_7_/13KwuyOb-VkMWnoV/"
+           "G_77LKbpnfmF-bk5/rr7rVRtfqTCEI4bZ/S3I2rE6MRRUVxEnW/P5xABVeh0lDi6_Ww/iOJJrACFvgtFT0TO/fRqtNyMZ8gV3S3w1/"
+           "I0AFqFscFiQl82nv/JnM3eS9dCwhLqWk7/WznOl6dfi7k.jpg")
+
 PHONE = "615-815-5119"
 PHONE_LINK = "tel:+16158155119"
 EMAIL = "kbutler@kbutlerguitars.com"
@@ -232,10 +240,15 @@ def build_shop():
   <p class="tag">Shirts and gear – coming soon</p>
   <p>The K. Butler Guitars merch store is on its way: T-shirts and other gear, printed and shipped on demand. Check back soon, or drop a line and we’ll let you know when it opens.</p>
   <p><a class="btn" href="mailto:{EMAIL}?subject=Tell%20me%20when%20the%20shop%20opens">Tell me when it opens</a></p>
-  <div class="placeholder-grid" aria-hidden="true">
-    <div class="ph">T-shirt<br><small>coming soon</small></div>
-    <div class="ph">Hoodie<br><small>coming soon</small></div>
-    <div class="ph">Stickers<br><small>coming soon</small></div>
+  <div class="products">
+    <a class="product" href="{SHOP_URL}/products/k-butler-guitars-logo-tee">
+      <img src="{TEE_IMG}" alt="K. Butler Guitars Logo Tee, black with bronze logo" loading="lazy">
+      <span class="product-name">K. Butler Guitars Logo Tee</span>
+      <span class="product-price">$30</span>
+      <span class="product-note">Preview: the store link goes live at launch</span>
+    </a>
+    <div class="ph" aria-hidden="true">Hoodie<br><small>coming soon</small></div>
+    <div class="ph" aria-hidden="true">Stickers<br><small>coming soon</small></div>
   </div>
   <p class="small">Looking for a guitar? See the <a href="guitars.html">Guitars</a> page.</p>
 </article>
