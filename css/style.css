@@ -120,3 +120,9 @@ h2{font-size:clamp(1.5rem,3vw,2.1rem)}
 .product-name{font:500 1.15rem var(--display);letter-spacing:.08em;text-transform:uppercase}
 .product-price{color:var(--bronze);font:500 1.05rem var(--display);letter-spacing:.08em}
 .product-note{font-size:.78rem;color:var(--muted)}
+
+/* contact form */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-status{margin:0;min-height:1.5em;font-size:.95rem}
+.form-status.ok{color:var(--bronze)}
+.form-status.err{color:#e08a7a}

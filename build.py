@@ -18,6 +18,9 @@ LOCAL_BASE = "img/"
 SHOP_URL = "https://k-butler-guitars-shop.fourthwall.com"
 TEE_IMG = "img/kbg-tee-front.jpg?v=2"
 
+# Web3Forms access key (public by design; routes messages to the inbox it was created for)
+WEB3FORMS_KEY = "912befac-b5f5-4486-b030-b5361d0c4362"
+
 PHONE = "615-815-5119"
 PHONE_LINK = "tel:+16158155119"
 EMAIL = "kbutler@kbutlerguitars.com"
@@ -217,12 +220,16 @@ def build_contact():
   <p class="tag">Have questions? We’ll be happy to answer!</p>
   <p>Thank you for your interest in K. Butler Guitars. We are thrilled to connect with fellow musicians and enthusiasts. Whether you have questions about our custom electric guitars, wish to explore bespoke instrument options, or simply want to discuss the art of luthiery, we welcome your inquiries with open arms.</p>
   <p class="contact-lines"><a href="{PHONE_LINK}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></p>
-  <form id="contact-form" class="form" action="mailto:{EMAIL}" method="post" enctype="text/plain">
+  <form id="contact-form" class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="{WEB3FORMS_KEY}">
+    <input type="hidden" name="subject" value="New message from the K. Butler Guitars website">
+    <input type="hidden" name="from_name" value="K. Butler Guitars website">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label>Name<input name="name" required autocomplete="name"></label>
     <label>Email<input type="email" name="email" required autocomplete="email"></label>
     <label>Message<textarea name="message" rows="6" required></textarea></label>
     <button class="btn" type="submit">Send</button>
-    <p class="small">For now this opens your email app with the message filled in. A proper form service goes here before launch.</p>
+    <p class="form-status" role="status" aria-live="polite"></p>
   </form>
   <div class="side-photos row"><img src="{img('k-butler-guitars-11.jpg')}" alt="The ’64 V2" loading="lazy"><img src="{img('k-butler-guitars-15.jpg')}" alt="Shark Bass" loading="lazy"></div>
 </article>

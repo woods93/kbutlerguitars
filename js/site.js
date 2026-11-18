@@ -34,3 +34,33 @@
     if (e.key === 'Escape' && !box.hidden) close();
   });
 })();
+
+// Contact form: send through Web3Forms without leaving the page.
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = form.querySelector('.form-status');
+  var btn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d.success) {
+        status.className = 'form-status ok';
+        status.textContent = 'Thanks! Your message was sent. We’ll get back to you soon.';
+        form.reset();
+      } else {
+        throw new Error(d.message || 'failed');
+      }
+    }).catch(function () {
+      status.className = 'form-status err';
+      status.textContent = 'Sorry, that didn’t go through. Please email kbutler@kbutlerguitars.com or call 615-815-5119.';
+    }).then(function () { btn.disabled = false; });
+  });
+})();
