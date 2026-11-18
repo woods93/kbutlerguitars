@@ -16,7 +16,7 @@ LOCAL_BASE = "img/"
 
 # Merch store (Fourthwall). Product photos are saved locally in img/.
 SHOP_URL = "https://k-butler-guitars-shop.fourthwall.com"
-TEE_IMG = "img/kbg-tee-front.jpg"
+TEE_IMG = "img/kbg-tee-front.jpg?v=2"
 
 PHONE = "615-815-5119"
 PHONE_LINK = "tel:+16158155119"
