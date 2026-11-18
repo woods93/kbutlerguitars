@@ -14,13 +14,9 @@ USE_LOCAL_IMAGES = True
 REMOTE_BASE = "https://kbutlerguitars.com/wp-content/uploads/"
 LOCAL_BASE = "img/"
 
-# Merch store (Fourthwall). The tee photo is hotlinked from Fourthwall's image host for the preview;
-# swap it for a local copy in img/ before launch.
+# Merch store (Fourthwall). Product photos are saved locally in img/.
 SHOP_URL = "https://k-butler-guitars-shop.fourthwall.com"
-TEE_IMG = ("https://imgproxy.fourthwall.dev/KoUZgrrpQIu3sp7ubzsK7Ux6M4R2VZmmlnHIbVCdPy0/w:1920/sm:1/enc/"
-           "jq2EuHlqjTLZbPDT/U6js3VxbQjJS4ArD/GvlnVWa0LlO2PS3T/5YfApjVmyi8Joa-y/FqP1zN4LuLvAJ_7_/13KwuyOb-VkMWnoV/"
-           "G_77LKbpnfmF-bk5/rr7rVRtfqTCEI4bZ/S3I2rE6MRRUVxEnW/P5xABVeh0lDi6_Ww/iOJJrACFvgtFT0TO/fRqtNyMZ8gV3S3w1/"
-           "I0AFqFscFiQl82nv/JnM3eS9dCwhLqWk7/WznOl6dfi7k.jpg")
+TEE_IMG = "img/kbg-tee-front.jpg"
 
 PHONE = "615-815-5119"
 PHONE_LINK = "tel:+16158155119"
