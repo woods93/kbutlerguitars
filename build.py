@@ -78,12 +78,12 @@ def page(filename, title, description, body, bodyclass=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=fam1">
+<link rel="stylesheet" href="css/style.css?v=logo2">
 </head>
 <body class="{bodyclass}">
 <a class="skip" href="#content">Skip to content</a>
 <header class="side">
-  <a class="logo" href="index.html"><img src="{img('k-butler-guitars-logo-w2x.png')}" alt="K. Butler Guitars"></a>
+  <a class="logo" href="index.html"><img src="{img('k-butler-guitars-logo-white-720.png')}" alt="K. Butler Guitars" width="360" height="360"></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
   <nav id="nav" aria-label="Main"><ul>{nav}</ul>
     <a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener" aria-label="K. Butler Guitars on Instagram">Instagram</a>
@@ -92,7 +92,7 @@ def page(filename, title, description, body, bodyclass=""):
 <main id="content">
 {body}
 <footer class="foot">
-  <img src="{img('k-butler-guitars-logo-bronze-600.png')}" alt="" class="foot-logo">
+  <img src="{img('k-butler-guitars-logo-bronze-440.png')}" alt="" class="foot-logo">
   <p><a href="{PHONE_LINK}">{PHONE}</a> &middot; <a href="mailto:{EMAIL}">{EMAIL}</a></p>
   <p class="small">&copy; 2022&ndash;2026 K. Butler Guitars. Special guitars and basses, made in Tennessee.</p>
 </footer>
