@@ -9,6 +9,7 @@ something to look at. Before going live, download the originals into ./img/ and 
 USE_LOCAL_IMAGES = True, then rebuild. After DNS moves, the old links will stop working.
 """
 import html
+import os
 
 USE_LOCAL_IMAGES = True
 REMOTE_BASE = "https://kbutlerguitars.com/wp-content/uploads/"
@@ -60,7 +61,7 @@ def esc(s):
 
 
 NAV = [("index.html", "Home"), ("about.html", "About"), ("guitars.html", "Guitars"),
-       ("shop.html", "Shop"), ("contact.html", "Contact")]
+       ("shop.html", "Shop"), ("family.html", "Family"), ("contact.html", "Contact")]
 
 
 def page(filename, title, description, body, bodyclass=""):
@@ -77,7 +78,7 @@ def page(filename, title, description, body, bodyclass=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=fam1">
 </head>
 <body class="{bodyclass}">
 <a class="skip" href="#content">Skip to content</a>
@@ -258,6 +259,31 @@ def build_shop():
 """
 
 
+SITE_ID = "k-butler-guitars"
+
+
+def build_family():
+    """Family page: cards for the other family sites, read from family.json."""
+    import json
+    here = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(here, "family.json"), encoding="utf-8") as fh:
+        data = json.load(fh)
+    cards = []
+    for f in data:
+        if f["id"] == SITE_ID:
+            continue
+        pic = ('<a class="fam-pic" href="%s" rel="noopener"><img src="%s" alt="%s" loading="lazy" '
+               'referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>'
+               % (esc(f["url"]), esc(f["image"]), esc(f["name"]))) if f.get("image") else ""
+        cards.append('<article class="fam-card">%s<h3><a href="%s" rel="noopener">%s</a></h3><p>%s</p></article>'
+                     % (pic, esc(f["url"]), esc(f["name"]), esc(f.get("blurb", ""))))
+    return '''<article class="prose">
+  <h1>Family</h1>
+  <p class="lede">The artists and makers we have built websites for.</p>
+  <div class="fam-grid">%s</div>
+</article>''' % "".join(cards)
+
+
 PAGES = [
     ("index.html", "K. Butler Guitars – Special guitars and basses made in Tennessee",
      "K. Butler Guitars: custom electric guitars and basses handmade in Tennessee by a luthier with over three decades of experience.",
@@ -265,6 +291,7 @@ PAGES = [
     ("about.html", "About – K. Butler Guitars", "About K. Butler, luthier and maker of custom electric guitars and basses in Tennessee.", build_about, ""),
     ("guitars.html", "Guitars – K. Butler Guitars", "The ’64, ’64 V2, Cheetah Chrome Signature, Shark Guitar, Shark Bass, MSPP5 and Wrangler – handmade by K. Butler Guitars.", build_guitars, ""),
     ("shop.html", "Shop – K. Butler Guitars", "K. Butler Guitars merch: T-shirts and gear, coming soon.", build_shop, ""),
+    ("family.html", "Family – K. Butler Guitars", "The artists and makers K. Butler Guitars shares a family with.", build_family, ""),
     ("contact.html", "Contact – K. Butler Guitars", "Contact K. Butler Guitars about custom electric guitars and basses.", build_contact, ""),
 ]
 
