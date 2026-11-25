@@ -17,7 +17,8 @@ LOCAL_BASE = "img/"
 
 # Merch store (Fourthwall). Product photos are saved locally in img/.
 SHOP_URL = "https://k-butler-guitars-shop.fourthwall.com"
-TEE_IMG = "img/kbg-tee-front.jpg?v=2"
+TEE_DARK_IMG = "img/kbg-tee-dark-front.avif?v=1"
+TEE_LIGHT_IMG = "img/kbg-tee-light-front.avif?v=1"
 
 # Web3Forms access key (public by design; routes messages to the inbox it was created for)
 WEB3FORMS_KEY = "912befac-b5f5-4486-b030-b5361d0c4362"
@@ -241,15 +242,21 @@ def build_shop():
     return f"""
 <article class="prose">
   <h1>Shop</h1>
-  <p class="tag">Shirts and gear – coming soon</p>
-  <p>The K. Butler Guitars merch store is on its way: T-shirts and other gear, printed and shipped on demand. Check back soon, or drop a line and we’ll let you know when it opens.</p>
-  <p><a class="btn" href="mailto:{EMAIL}?subject=Tell%20me%20when%20the%20shop%20opens">Tell me when it opens</a></p>
+  <p class="tag">Shirts and gear</p>
+  <p>The K. Butler Guitars logo tee is in two versions: white logo on black or purple, and black logo on white. Printed and shipped on demand, $30 each. Checkout is handled by our store on Fourthwall.</p>
+  <p><a class="btn" href="{SHOP_URL}">Visit the store</a></p>
   <div class="products">
-    <a class="product" href="{SHOP_URL}/products/k-butler-guitars-logo-tee">
-      <img src="{TEE_IMG}" alt="K. Butler Guitars Logo Tee, black with bronze logo" loading="lazy">
-      <span class="product-name">K. Butler Guitars Logo Tee</span>
+    <a class="product" href="{SHOP_URL}/products/k-butler-guitars-logo-tee-dark-black-purple">
+      <img src="{TEE_DARK_IMG}" alt="K. Butler Guitars Logo Tee, white logo on a black shirt (also in Team Purple)" loading="lazy">
+      <span class="product-name">Logo Tee: Black &amp; Purple</span>
       <span class="product-price">$30</span>
-      <span class="product-note">Preview: the store link goes live at launch</span>
+      <span class="product-note">White logo on black or Team Purple</span>
+    </a>
+    <a class="product" href="{SHOP_URL}/products/k-butler-guitars-logo-tee-light-white">
+      <img src="{TEE_LIGHT_IMG}" alt="K. Butler Guitars Logo Tee, black logo on a white shirt" loading="lazy">
+      <span class="product-name">Logo Tee: White</span>
+      <span class="product-price">$30</span>
+      <span class="product-note">Black logo on white</span>
     </a>
     <div class="ph" aria-hidden="true">Hoodie<br><small>coming soon</small></div>
     <div class="ph" aria-hidden="true">Stickers<br><small>coming soon</small></div>
@@ -290,7 +297,7 @@ PAGES = [
      build_home, "home"),
     ("about.html", "About – K. Butler Guitars", "About K. Butler, luthier and maker of custom electric guitars and basses in Tennessee.", build_about, ""),
     ("guitars.html", "Guitars – K. Butler Guitars", "The ’64, ’64 V2, Cheetah Chrome Signature, Shark Guitar, Shark Bass, MSPP5 and Wrangler – handmade by K. Butler Guitars.", build_guitars, ""),
-    ("shop.html", "Shop – K. Butler Guitars", "K. Butler Guitars merch: T-shirts and gear, coming soon.", build_shop, ""),
+    ("shop.html", "Shop – K. Butler Guitars", "K. Butler Guitars merch: logo T-shirts in black, purple and white, printed and shipped on demand.", build_shop, ""),
     ("family.html", "Family – K. Butler Guitars", "The artists and makers K. Butler Guitars shares a family with.", build_family, ""),
     ("contact.html", "Contact – K. Butler Guitars", "Contact K. Butler Guitars about custom electric guitars and basses.", build_contact, ""),
 ]
